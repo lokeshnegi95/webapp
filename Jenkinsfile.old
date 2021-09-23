@@ -2,7 +2,7 @@ pipeline {
   agent any 
   tools {
     maven 'M2_home'
-    jdk 'JAVA_HOME'
+   // jdk 'JAVA_HOME'
   }
   stages {
     stage ('Initialize') {
@@ -13,14 +13,14 @@ pipeline {
             ''' 
       }
     }
-    /*
+    
     stage ('Check-Git-Secrets') {
       steps {
         sh 'rm trufflehog || true'
         sh 'docker run gesellix/trufflehog --json https://github.com/cehkunal/webapp.git > trufflehog'
         sh 'cat trufflehog'
       }
-    }*/
+    }
     
     stage ('Source Composition Analysis') {
       steps {
