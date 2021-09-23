@@ -21,6 +21,17 @@ pipeline {
         sh 'cat trufflehog'
       }
     }
+    stage('Test on Linux') {
+            agent { 
+                label 'ansible-control-node'
+            }
+            steps {
+                sh 'rm trufflehog || true'
+                sh 'docker run gesellix/trufflehog --json https://github.com/cehkunal/webapp.git > trufflehog'
+                sh 'cat trufflehog'
+              }
+         
+        }
     
     stage ('Source Composition Analysis') {
       steps {
